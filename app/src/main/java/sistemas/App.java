@@ -102,10 +102,18 @@ public class App {
     // kilómetros/hora y la distancia en kilómetros
     public static int calcularTiempoViaje(double distancia, double velocidadKilometros, double velocidadHora) {
         try {
-          //Profe esa vaina no da,
+            if (velocidadKilometros <= 0 || velocidadHora <= 0) {
+                throw new IllegalArgumentException("La velocidad debe ser mayor que cero");
+            }
+            
+            // Cálculo del tiempo en horas
+            double tiempo = distancia * velocidadHora/velocidadKilometros;
+            
+            // Redondeo y conversión a entero
+            return (int) Math.round(tiempo);
         } catch (Exception e) {
             return -1;
-        } return 0;
+        } 
     }
 
     // Un avión necesita cargar combustible para cubrir sus rutas programadas en el
